@@ -1,0 +1,24 @@
+DESCRIPTION: 'fine tune'
+NAME: 'resnet34_first'
+OUTPUT_DIR: './output/resnet34_fine_tune'
+BACKBONE: 'resnet34'
+PRETRAIN_MODEL: './pretrained_model/pretrained_resnet34.pth'
+PRETRAINED: True
+FREEZE_CONV_BODY_AT: 2
+DEVICE: 'cuda'
+FOCAL_LOSS_ALPHA: [1.0, 1.0, 1.0, 2.0]
+SOLVER:
+  EPOCH: 50
+  GAMMA: 0.5
+  BASE_LR: 0.0001
+  STEPS: (500, 1000)
+INPUT:
+  BRIGHTNESS: 0.1
+  CONTRAST: 0.1
+  SATURATION: 0.1
+  HUE: 0.1
+  HORIZONTAL_FLIP_PROB_TRAIN: 0.5
+  VERTICAL_FLIP_PROB_TRAIN: 0.5
+DATASETS:
+  TRAIN: 'train'
+  TEST: 'val'
